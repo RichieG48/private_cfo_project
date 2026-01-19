@@ -1,0 +1,17 @@
+# Python boilerplate
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+env/
+
+# Environment variables (CRITICAL)
+.env
+
+# Data (Never commit client data)
+data/
+*.pdf
+*.xlsx
+
+# Vector Store (Local DB)
+chroma_db/

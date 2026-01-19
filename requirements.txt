@@ -1,0 +1,31 @@
+# --- Core Framework ---
+langchain>=0.1.0
+langchain-community
+langchain-core
+langchain-text-splitters
+
+# --- LLM Connectors ---
+langchain-ollama      # For Local Mistral 7B / Llama 3
+langchain-mistralai   # For Cloud Mistral Large
+ollama                # Python client for Ollama
+
+# --- Data Ingestion (The Heavy Lifting) ---
+# Unstructured is the gold standard for parsing tables from PDFs
+unstructured[all-docs]
+pdf2image
+pdfminer.six
+pypdf
+pillow_heif
+openpyxl              # For Excel ingestion
+pandas
+
+# --- Vector Database ---
+chromadb              # Runs locally, no cloud setup needed
+
+# --- App Interface ---
+streamlit             # The Frontend
+
+# --- Utilities ---
+python-dotenv         # For managing API keys securely
+pydantic>=2.0         # For data validation (Enterprise requirement)
+tiktoken              # For counting tokens
