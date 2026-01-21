@@ -18,6 +18,7 @@ pypdf
 pillow_heif
 openpyxl              # For Excel ingestion
 pandas
+langchain-chroma
 
 # --- Vector Database ---
 chromadb              # Runs locally, no cloud setup needed
