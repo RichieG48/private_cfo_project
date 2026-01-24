@@ -5,6 +5,7 @@ This allows us to switch providers (e.g., Llama 3 -> Mistral) in one place.
 import os
 from langchain_ollama import ChatOllama
 from langchain_mistralai import ChatMistralAI
+from langchain_google_genai import ChatGoogleGenerativeAI 
 from src.config import settings
 
 class LLMFactory:
@@ -27,16 +28,16 @@ class LLMFactory:
         Returns the Cloud Model (Mistral API).
         Used for: Complex generic reasoning, Coding, Creative writing.
         """
-        api_key = os.getenv("MISTRAL_API_KEY")
+        api_key = settings.GEMINI_API_KEY
         # If no key is found, we fall back to local to prevent crashes
         if not api_key:
-            print("⚠️ WARNING: No MISTRAL_API_KEY found. Falling back to Local Model.")
+            print("⚠️ WARNING: No GEMINI_API_KEY found. Falling back to Local Model.")
             return LLMFactory.get_local_model(temperature)
             
-        return ChatMistralAI(
+        return ChatGoogleGenerativeAI(
             model=settings.CLOUD_MODEL_NAME,
             temperature=temperature,
-            mistral_api_key=api_key
+            api_key=api_key
         )
 
 # Simple test to verify connection

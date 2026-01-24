@@ -17,7 +17,7 @@ class Config:
     # The local model for routing and sensitive data (Must be pulled in Ollama)
     LOCAL_MODEL_NAME = "mistral" 
     # The powerful cloud model for generic reasoning
-    CLOUD_MODEL_NAME = "mistral-large-latest"
+    CLOUD_MODEL_NAME = "gemini-2.5-flash"
     
     # --- Vector Store ---
     COLLECTION_NAME = "finance_docs"
@@ -26,7 +26,7 @@ class Config:
     CHUNK_OVERLAP = 200
 
     # --- API Keys ---
-    MISTRAL_API_KEY = os.getenv("MISTRAL_API_KEY")
+    GEMINI_API_KEY = "AIzaSyCjT1iyuqopZkYxBb0DCo5YA87gDsow2uo"
 
 # Create a global config instance
 settings = Config()
