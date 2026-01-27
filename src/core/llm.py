@@ -4,7 +4,6 @@ This allows us to switch providers (e.g., Llama 3 -> Mistral) in one place.
 """
 import os
 from langchain_ollama import ChatOllama
-from langchain_mistralai import ChatMistralAI
 from langchain_google_genai import ChatGoogleGenerativeAI 
 from src.config import settings
 
