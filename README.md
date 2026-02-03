@@ -1,6 +1,6 @@
 # Private CFO
 
-A powerful AI assistant for financial analysis and decision-making.
+AI assistant that cares about PII data
 
 ## Prerequisites
 
