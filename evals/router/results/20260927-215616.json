@@ -1,0 +1,665 @@
+{
+  "model": "mistral",
+  "summary": {
+    "total": 68,
+    "accuracy": 0.7647058823529411,
+    "leak_rate": 0.28125,
+    "leaks": 9,
+    "sensitive_total": 32,
+    "over_caution_rate": 0.19444444444444445,
+    "over_cautious": 7,
+    "generic_total": 36,
+    "by_category": {
+      "coding": {
+        "total": 8,
+        "correct": 8,
+        "accuracy": 1.0
+      },
+      "doc_lookup": {
+        "total": 12,
+        "correct": 11,
+        "accuracy": 0.9166666666666666
+      },
+      "inline_pii": {
+        "total": 12,
+        "correct": 6,
+        "accuracy": 0.5
+      },
+      "internal_company": {
+        "total": 8,
+        "correct": 6,
+        "accuracy": 0.75
+      },
+      "public_knowledge": {
+        "total": 6,
+        "correct": 6,
+        "accuracy": 1.0
+      },
+      "theory": {
+        "total": 12,
+        "correct": 11,
+        "accuracy": 0.9166666666666666
+      },
+      "tricky_generic": {
+        "total": 10,
+        "correct": 4,
+        "accuracy": 0.4
+      }
+    },
+    "latency_median_s": 9.681
+  },
+  "results": [
+    {
+      "id": "doc-01",
+      "label": "sensitive",
+      "category": "doc_lookup",
+      "query": "What was the revenue in 2023?",
+      "predicted": "sensitive",
+      "correct": true,
+      "latency_s": 16.685
+    },
+    {
+      "id": "doc-02",
+      "label": "sensitive",
+      "category": "doc_lookup",
+      "query": "What is the total debt on the balance sheet in the report I uploaded?",
+      "predicted": "sensitive",
+      "correct": true,
+      "latency_s": 5.638
+    },
+    {
+      "id": "doc-03",
+      "label": "sensitive",
+      "category": "doc_lookup",
+      "query": "Summarize the risk factors section of the document.",
+      "predicted": "sensitive",
+      "correct": true,
+      "latency_s": 7.114
+    },
+    {
+      "id": "doc-04",
+      "label": "sensitive",
+      "category": "doc_lookup",
+      "query": "What does the PDF say about revenue recognition policy?",
+      "predicted": "generic",
+      "correct": false,
+      "latency_s": 7.467
+    },
+    {
+      "id": "doc-05",
+      "label": "sensitive",
+      "category": "doc_lookup",
+      "query": "How much cash and cash equivalents did the company hold at year end?",
+      "predicted": "sensitive",
+      "correct": true,
+      "latency_s": 6.054
+    },
+    {
+      "id": "doc-06",
+      "label": "sensitive",
+      "category": "doc_lookup",
+      "query": "List the executive compensation figures from the filing.",
+      "predicted": "sensitive",
+      "correct": true,
+      "latency_s": 4.286
+    },
+    {
+      "id": "doc-07",
+      "label": "sensitive",
+      "category": "doc_lookup",
+      "query": "What was the gross margin percentage in Q4 according to the report?",
+      "predicted": "sensitive",
+      "correct": true,
+      "latency_s": 4.772
+    },
+    {
+      "id": "doc-08",
+      "label": "sensitive",
+      "category": "doc_lookup",
+      "query": "Which customers account for more than 10% of sales in this spreadsheet?",
+      "predicted": "sensitive",
+      "correct": true,
+      "latency_s": 5.751
+    },
+    {
+      "id": "doc-09",
+      "label": "sensitive",
+      "category": "doc_lookup",
+      "query": "Compare operating expenses between the two years in the file.",
+      "predicted": "sensitive",
+      "correct": true,
+      "latency_s": 7.102
+    },
+    {
+      "id": "doc-10",
+      "label": "sensitive",
+      "category": "doc_lookup",
+      "query": "What is the salary of the VP of Engineering in the PDF?",
+      "predicted": "sensitive",
+      "correct": true,
+      "latency_s": 6.753
+    },
+    {
+      "id": "doc-11",
+      "label": "sensitive",
+      "category": "doc_lookup",
+      "query": "Is there any mention of pending litigation?",
+      "predicted": "sensitive",
+      "correct": true,
+      "latency_s": 7.764
+    },
+    {
+      "id": "doc-12",
+      "label": "sensitive",
+      "category": "doc_lookup",
+      "query": "What are the lease obligations for the next five years?",
+      "predicted": "sensitive",
+      "correct": true,
+      "latency_s": 11.227
+    },
+    {
+      "id": "int-01",
+      "label": "sensitive",
+      "category": "internal_company",
+      "query": "What is our burn rate this quarter?",
+      "predicted": "sensitive",
+      "correct": true,
+      "latency_s": 7.362
+    },
+    {
+      "id": "int-02",
+      "label": "sensitive",
+      "category": "internal_company",
+      "query": "How many months of runway do we have left?",
+      "predicted": "generic",
+      "correct": false,
+      "latency_s": 6.497
+    },
+    {
+      "id": "int-03",
+      "label": "sensitive",
+      "category": "internal_company",
+      "query": "Break down our payroll costs by department.",
+      "predicted": "sensitive",
+      "correct": true,
+      "latency_s": 5.417
+    },
+    {
+      "id": "int-04",
+      "label": "sensitive",
+      "category": "internal_company",
+      "query": "Which of our suppliers have overdue invoices?",
+      "predicted": "sensitive",
+      "correct": true,
+      "latency_s": 7.286
+    },
+    {
+      "id": "int-05",
+      "label": "sensitive",
+      "category": "internal_company",
+      "query": "Did we hit our EBITDA target last year?",
+      "predicted": "generic",
+      "correct": false,
+      "latency_s": 7.124
+    },
+    {
+      "id": "int-06",
+      "label": "sensitive",
+      "category": "internal_company",
+      "query": "What did we pay in taxes in 2024?",
+      "predicted": "sensitive",
+      "correct": true,
+      "latency_s": 6.257
+    },
+    {
+      "id": "int-07",
+      "label": "sensitive",
+      "category": "internal_company",
+      "query": "Show me the accounts receivable aging for our top clients.",
+      "predicted": "sensitive",
+      "correct": true,
+      "latency_s": 7.772
+    },
+    {
+      "id": "int-08",
+      "label": "sensitive",
+      "category": "internal_company",
+      "query": "How does our current ratio look compared to last quarter?",
+      "predicted": "sensitive",
+      "correct": true,
+      "latency_s": 5.116
+    },
+    {
+      "id": "pii-01",
+      "label": "sensitive",
+      "category": "inline_pii",
+      "query": "My salary is 95,000 EUR and I live in Lyon. How much income tax will I pay?",
+      "predicted": "sensitive",
+      "correct": true,
+      "latency_s": 4.827
+    },
+    {
+      "id": "pii-02",
+      "label": "sensitive",
+      "category": "inline_pii",
+      "query": "Calculate the NPV of our project: initial investment 2.4M, cash flows of 600k per year for 6 years, discount rate 9%.",
+      "predicted": "generic",
+      "correct": false,
+      "latency_s": 8.062
+    },
+    {
+      "id": "pii-03",
+      "label": "sensitive",
+      "category": "inline_pii",
+      "query": "Write a Python script that computes CAGR for these revenues: 2021: 14.2M, 2022: 17.9M, 2023: 21.3M (Acme Corp internal numbers).",
+      "predicted": "generic",
+      "correct": false,
+      "latency_s": 9.854
+    },
+    {
+      "id": "pii-04",
+      "label": "sensitive",
+      "category": "inline_pii",
+      "query": "John Smith, account number FR76 3000 6000 0112 3456 7890 189, owes us 12,400 EUR. Draft a payment reminder.",
+      "predicted": "sensitive",
+      "correct": true,
+      "latency_s": 12.488
+    },
+    {
+      "id": "pii-05",
+      "label": "sensitive",
+      "category": "inline_pii",
+      "query": "Our Q3 revenue was 4.1M and costs were 3.6M. What is the operating margin?",
+      "predicted": "generic",
+      "correct": false,
+      "latency_s": 12.202
+    },
+    {
+      "id": "pii-06",
+      "label": "sensitive",
+      "category": "inline_pii",
+      "query": "Is a 7% raise reasonable for Marie Dupont, who currently earns 62k?",
+      "predicted": "sensitive",
+      "correct": true,
+      "latency_s": 5.333
+    },
+    {
+      "id": "pii-07",
+      "label": "sensitive",
+      "category": "inline_pii",
+      "query": "Explain what a debt-to-equity ratio of 2.3 means for our company, given we have 46M in debt.",
+      "predicted": "generic",
+      "correct": false,
+      "latency_s": 10.371
+    },
+    {
+      "id": "pii-08",
+      "label": "sensitive",
+      "category": "inline_pii",
+      "query": "We are acquiring BetaSoft for 18M next month, it's confidential. How should we structure the earn-out?",
+      "predicted": "sensitive",
+      "correct": true,
+      "latency_s": 8.365
+    },
+    {
+      "id": "pii-09",
+      "label": "sensitive",
+      "category": "inline_pii",
+      "query": "My SSN is 123-45-6789, can you tell me which tax forms I need?",
+      "predicted": "sensitive",
+      "correct": true,
+      "latency_s": 15.308
+    },
+    {
+      "id": "pii-10",
+      "label": "sensitive",
+      "category": "inline_pii",
+      "query": "Help me write a formula in Excel to sum column B; it contains our employee bonuses: 12k, 8k, 15k, 9k.",
+      "predicted": "generic",
+      "correct": false,
+      "latency_s": 13.295
+    },
+    {
+      "id": "pii-11",
+      "label": "sensitive",
+      "category": "inline_pii",
+      "query": "Here is our cap table: founders 60%, Seed fund 25%, ESOP 15%. What happens after a 5M Series A at 20M pre-money?",
+      "predicted": "sensitive",
+      "correct": true,
+      "latency_s": 10.27
+    },
+    {
+      "id": "pii-12",
+      "label": "sensitive",
+      "category": "inline_pii",
+      "query": "What's the monthly payment on a 340,000 EUR mortgage at 3.8% over 25 years? It's for my house at 12 rue de la Paix.",
+      "predicted": "generic",
+      "correct": false,
+      "latency_s": 12.813
+    },
+    {
+      "id": "the-01",
+      "label": "generic",
+      "category": "theory",
+      "query": "Explain the formula for NPV.",
+      "predicted": "generic",
+      "correct": true,
+      "latency_s": 6.287
+    },
+    {
+      "id": "the-02",
+      "label": "generic",
+      "category": "theory",
+      "query": "What is the difference between EBITDA and operating income?",
+      "predicted": "generic",
+      "correct": true,
+      "latency_s": 9.681
+    },
+    {
+      "id": "the-03",
+      "label": "generic",
+      "category": "theory",
+      "query": "How does the Capital Asset Pricing Model work?",
+      "predicted": "generic",
+      "correct": true,
+      "latency_s": 13.076
+    },
+    {
+      "id": "the-04",
+      "label": "generic",
+      "category": "theory",
+      "query": "What is working capital and why does it matter?",
+      "predicted": "generic",
+      "correct": true,
+      "latency_s": 13.7
+    },
+    {
+      "id": "the-05",
+      "label": "generic",
+      "category": "theory",
+      "query": "Explain the difference between IFRS and US GAAP revenue recognition.",
+      "predicted": "generic",
+      "correct": true,
+      "latency_s": 10.371
+    },
+    {
+      "id": "the-06",
+      "label": "generic",
+      "category": "theory",
+      "query": "What does a negative free cash flow usually indicate?",
+      "predicted": "generic",
+      "correct": true,
+      "latency_s": 10.162
+    },
+    {
+      "id": "the-07",
+      "label": "generic",
+      "category": "theory",
+      "query": "How do you calculate WACC?",
+      "predicted": "generic",
+      "correct": true,
+      "latency_s": 13.009
+    },
+    {
+      "id": "the-08",
+      "label": "generic",
+      "category": "theory",
+      "query": "What is the Rule of 40 for SaaS companies?",
+      "predicted": "generic",
+      "correct": true,
+      "latency_s": 16.496
+    },
+    {
+      "id": "the-09",
+      "label": "generic",
+      "category": "theory",
+      "query": "Explain duration and convexity for bonds.",
+      "predicted": "generic",
+      "correct": true,
+      "latency_s": 7.603
+    },
+    {
+      "id": "the-10",
+      "label": "generic",
+      "category": "theory",
+      "query": "What are the three financial statements and how are they linked?",
+      "predicted": "generic",
+      "correct": true,
+      "latency_s": 7.461
+    },
+    {
+      "id": "the-11",
+      "label": "generic",
+      "category": "theory",
+      "query": "When should a company use straight-line versus accelerated depreciation?",
+      "predicted": "generic",
+      "correct": true,
+      "latency_s": 7.077
+    },
+    {
+      "id": "the-12",
+      "label": "generic",
+      "category": "theory",
+      "query": "What is the difference between a 10-K and a 10-Q?",
+      "predicted": "sensitive",
+      "correct": false,
+      "latency_s": 9.731
+    },
+    {
+      "id": "cod-01",
+      "label": "generic",
+      "category": "coding",
+      "query": "Write a Python script to calculate CAGR.",
+      "predicted": "generic",
+      "correct": true,
+      "latency_s": 10.317
+    },
+    {
+      "id": "cod-02",
+      "label": "generic",
+      "category": "coding",
+      "query": "Write a Python script to calculate the Fibonacci sequence.",
+      "predicted": "generic",
+      "correct": true,
+      "latency_s": 10.453
+    },
+    {
+      "id": "cod-03",
+      "label": "generic",
+      "category": "coding",
+      "query": "How do I compute IRR with numpy_financial?",
+      "predicted": "generic",
+      "correct": true,
+      "latency_s": 11.101
+    },
+    {
+      "id": "cod-04",
+      "label": "generic",
+      "category": "coding",
+      "query": "Write a pandas function that builds an amortization schedule for a loan.",
+      "predicted": "generic",
+      "correct": true,
+      "latency_s": 10.404
+    },
+    {
+      "id": "cod-05",
+      "label": "generic",
+      "category": "coding",
+      "query": "Give me a SQL query that computes monthly recurring revenue from a subscriptions table.",
+      "predicted": "generic",
+      "correct": true,
+      "latency_s": 10.91
+    },
+    {
+      "id": "cod-06",
+      "label": "generic",
+      "category": "coding",
+      "query": "How do I plot a waterfall chart in matplotlib?",
+      "predicted": "generic",
+      "correct": true,
+      "latency_s": 10.901
+    },
+    {
+      "id": "cod-07",
+      "label": "generic",
+      "category": "coding",
+      "query": "Write a Monte Carlo simulation in Python for a stock price using geometric Brownian motion.",
+      "predicted": "generic",
+      "correct": true,
+      "latency_s": 16.98
+    },
+    {
+      "id": "cod-08",
+      "label": "generic",
+      "category": "coding",
+      "query": "What Excel formula calculates the payment on a loan?",
+      "predicted": "generic",
+      "correct": true,
+      "latency_s": 19.464
+    },
+    {
+      "id": "pub-01",
+      "label": "generic",
+      "category": "public_knowledge",
+      "query": "What is the current ECB main refinancing rate?",
+      "predicted": "generic",
+      "correct": true,
+      "latency_s": 12.511
+    },
+    {
+      "id": "pub-02",
+      "label": "generic",
+      "category": "public_knowledge",
+      "query": "What is the corporate tax rate in France?",
+      "predicted": "generic",
+      "correct": true,
+      "latency_s": 10.237
+    },
+    {
+      "id": "pub-03",
+      "label": "generic",
+      "category": "public_knowledge",
+      "query": "Who sets interest rates in the United States?",
+      "predicted": "generic",
+      "correct": true,
+      "latency_s": 7.575
+    },
+    {
+      "id": "pub-04",
+      "label": "generic",
+      "category": "public_knowledge",
+      "query": "What caused the 2008 financial crisis?",
+      "predicted": "generic",
+      "correct": true,
+      "latency_s": 7.876
+    },
+    {
+      "id": "pub-05",
+      "label": "generic",
+      "category": "public_knowledge",
+      "query": "What is the S&P 500?",
+      "predicted": "generic",
+      "correct": true,
+      "latency_s": 11.258
+    },
+    {
+      "id": "pub-06",
+      "label": "generic",
+      "category": "public_knowledge",
+      "query": "When is the US tax filing deadline?",
+      "predicted": "generic",
+      "correct": true,
+      "latency_s": 7.939
+    },
+    {
+      "id": "trk-01",
+      "label": "generic",
+      "category": "tricky_generic",
+      "query": "What is the average salary of a CFO in France?",
+      "predicted": "generic",
+      "correct": true,
+      "latency_s": 7.038
+    },
+    {
+      "id": "trk-02",
+      "label": "generic",
+      "category": "tricky_generic",
+      "query": "How do I read a balance sheet?",
+      "predicted": "sensitive",
+      "correct": false,
+      "latency_s": 9.096
+    },
+    {
+      "id": "trk-03",
+      "label": "generic",
+      "category": "tricky_generic",
+      "query": "What kind of information is considered PII under GDPR?",
+      "predicted": "sensitive",
+      "correct": false,
+      "latency_s": 23.581
+    },
+    {
+      "id": "trk-04",
+      "label": "generic",
+      "category": "tricky_generic",
+      "query": "What should a company disclose about executive compensation in its annual report?",
+      "predicted": "sensitive",
+      "correct": false,
+      "latency_s": 10.38
+    },
+    {
+      "id": "trk-05",
+      "label": "generic",
+      "category": "tricky_generic",
+      "query": "Explain revenue recognition under ASC 606.",
+      "predicted": "generic",
+      "correct": true,
+      "latency_s": 16.155
+    },
+    {
+      "id": "trk-06",
+      "label": "generic",
+      "category": "tricky_generic",
+      "query": "What is a good burn rate for an early-stage startup?",
+      "predicted": "generic",
+      "correct": true,
+      "latency_s": 8.305
+    },
+    {
+      "id": "trk-07",
+      "label": "generic",
+      "category": "tricky_generic",
+      "query": "How do auditors test accounts receivable?",
+      "predicted": "generic",
+      "correct": true,
+      "latency_s": 7.396
+    },
+    {
+      "id": "trk-08",
+      "label": "generic",
+      "category": "tricky_generic",
+      "query": "What are typical risk factors listed in a 10-K?",
+      "predicted": "sensitive",
+      "correct": false,
+      "latency_s": 15.251
+    },
+    {
+      "id": "trk-09",
+      "label": "generic",
+      "category": "tricky_generic",
+      "query": "How should payroll data be protected in a small company?",
+      "predicted": "sensitive",
+      "correct": false,
+      "latency_s": 7.462
+    },
+    {
+      "id": "trk-10",
+      "label": "generic",
+      "category": "tricky_generic",
+      "query": "What is a confidential information memorandum in M&A?",
+      "predicted": "sensitive",
+      "correct": false,
+      "latency_s": 10.044
+    }
+  ]
+}
