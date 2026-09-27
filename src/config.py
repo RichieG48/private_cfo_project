@@ -15,7 +15,9 @@ class Config:
 
     # --- Models ---
     # The local model for routing and sensitive data (Must be pulled in Ollama)
-    LOCAL_MODEL_NAME = "mistral" 
+    LOCAL_MODEL_NAME = "mistral"
+    EMBEDDING_MODEL_NAME = "nomic-embed-text"
+    OLLAMA_BASE_URL = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434")
     # The powerful cloud model for generic reasoning
     CLOUD_MODEL_NAME = "gemini-2.5-flash"
     
@@ -26,7 +28,7 @@ class Config:
     CHUNK_OVERLAP = 200
 
     # --- API Keys ---
-    GEMINI_API_KEY = "AIzaSyCjT1iyuqopZkYxBb0DCo5YA87gDsow2uo"
+    GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
 
 # Create a global config instance
 settings = Config()

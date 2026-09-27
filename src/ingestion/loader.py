@@ -5,9 +5,7 @@ from langchain_community.document_loaders import PyPDFLoader
 from langchain_community.document_loaders import UnstructuredExcelLoader
 from src.utils.logger import get_logger
 
-# We will set up logging properly later, but this prevents import errors
-import logging
-logger = logging.getLogger(__name__)
+logger = get_logger(__name__)
 
 class IngestionManager:
     """
@@ -65,8 +63,6 @@ class IngestionManager:
             logger.error(f"Error loading Excel: {e}")
             return []
 
-# Simple test block (runs only if you execute this file directly)
 if __name__ == "__main__":
-    # Create a dummy file to test logic if you don't have one
     ingestor = IngestionManager()
     print("Ingestion Engine Initialized. Ready for files.")

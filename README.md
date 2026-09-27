@@ -23,13 +23,13 @@ ollama pull nomic-embed-text
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/yourusername/private-cfo.git
+   git clone https://github.com/RichieG48/private_cfo_project.git
    ```
 
 2. Navigate to the project directory:
 
    ```bash
-   cd private-cfo
+   cd private_cfo_project
    ```
 
 3. Create a virtual environment:
@@ -38,10 +38,11 @@ ollama pull nomic-embed-text
    python -m venv .venv
    ```
 
-4. Activate the virtual environment (Windows):
+4. Activate the virtual environment:
 
    ```bash
-   .venv\Scripts\activate
+   source .venv/bin/activate      # macOS / Linux
+   .venv\Scripts\activate         # Windows
    ```
 
 5. Install the requirements:
@@ -58,14 +59,13 @@ Create a `.env` file in the root directory:
 GOOGLE_API_KEY=your_gemini_api_key_here
 ```
 
-(Note: No API key is needed for the Local Agent)
+The key is only used for queries the router classifies as generic. Without it, every query is answered by the local model.
 
 ### 4. Run the Application
 
-Launch the "Cockpit" UI:
-
 ```bash
-PYTHONPATH=. streamlit run src/app.py
+PYTHONPATH=. streamlit run src/app.py        # macOS / Linux
+$env:PYTHONPATH="."; streamlit run src/app.py  # Windows (PowerShell)
 ```
 
 ## Usage Guide
@@ -88,5 +88,3 @@ We use nomic-embed-text locally instead of OpenAI/Cohere embeddings. This ensure
 ### The "Cookie Jar" Problem (Database Locking)
 
 The system implements a custom Soft Reset mechanism for ChromaDB. Instead of deleting the database directory (which causes OS-level file locks in Streamlit), the application connects to the existing persistent client and wipes the collection via API. This ensures stable re-ingestion without crashing the UI.
-
-I hope this helps! Let me know if you have any further questions.

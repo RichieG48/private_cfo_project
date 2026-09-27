@@ -7,7 +7,6 @@ logger = get_logger(__name__)
 
 class CloudAgent:
     def __init__(self):
-        # This uses the API Key from .env
         self.llm = LLMFactory.get_cloud_model(temperature=0.7)
         
         self.prompt = ChatPromptTemplate.from_template("""
@@ -23,9 +22,9 @@ class CloudAgent:
         self.chain = self.prompt | self.llm | StrOutputParser()
 
     def ask(self, query: str):
-        logger.info(f"Routing to CLOUD Brain: '{query}'")
+        logger.info("Sending query to cloud model.")
         try:
             return self.chain.invoke({"query": query})
         except Exception as e:
-            logger.error(f"Cloud Error: {e}")
-            return "I could not reach the Cloud Brain. Please check your internet or API key."
+            logger.error(f"Cloud error: {e}")
+            return "I could not reach the cloud model. Please check your internet connection or GOOGLE_API_KEY."

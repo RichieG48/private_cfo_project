@@ -1,10 +1,8 @@
 import streamlit as st
 import os
-import shutil
 from src.core.agent import PrivateCFO
 from src.ingestion.loader import IngestionManager
 from src.ingestion.vector_db import VectorDB
-import gc
 
 # 1. Page Configuration
 st.set_page_config(
@@ -13,15 +11,13 @@ st.set_page_config(
     layout="wide"
 )
 
-# 2. Session State Management
-# Streamlit refreshes the script on every click. 
-# We use st.session_state to remember things between refreshes.
+# 2. Session State
+# Streamlit reruns the script on every interaction; session_state persists across reruns.
 
 if "messages" not in st.session_state:
     st.session_state.messages = []
 
 if "agent" not in st.session_state:
-    # Initialize the Brain once
     st.session_state.agent = PrivateCFO()
 
 # 3. The Sidebar: Data Ingestion
@@ -42,13 +38,11 @@ with st.sidebar:
         if st.button("🧠 Ingest & Memorize"):
             with st.status("Processing Document...", expanded=True) as status:
                 try:
-                    # CRITICAL STEP 1: Release the Lock
-                    # If an agent exists, it's holding the DB open. Kill it.
+                    # Drop the agent so it is rebuilt against the refreshed vector store on the next rerun.
                     if "agent" in st.session_state:
                         del st.session_state.agent
                         st.write("🧹 Clearing old memory locks...")
                     
-                    gc.collect()
                     # A. Load
                     st.write("📖 Reading file...")
                     loader = IngestionManager()
@@ -58,11 +52,7 @@ with st.sidebar:
                     st.write("🔢 Vectorizing content...")
                     vdb = VectorDB(reset=True) 
                     vdb.ingest_documents(docs)
-                    
-                    # CRITICAL STEP 2: Force Reload
-                    # We deleted the agent above. The next time the script runs (in 1ms),
-                    # it will re-initialize the Agent with the NEW database.
-                    
+
                     status.update(label="✅ Knowledge Base Updated!", state="complete", expanded=False)
                     st.success(f"Ingested {len(docs)} pages. The Agent is ready.")
                     
@@ -73,7 +63,7 @@ with st.sidebar:
 st.title("🔒 Private CFO Agent")
 st.markdown("""
 * **Sovereign Mode:** Answers sensitive questions using local Ollama (Mistral).
-* **Cloud Mode:** Answers general math/coding questions using Cloud Brain.
+* **Cloud Mode:** Answers general math/coding questions using Gemini.
 """)
 
 # Display Chat History
@@ -92,7 +82,6 @@ if prompt := st.chat_input("Ask about your data or financial theory..."):
     # B. Generate Response
     with st.chat_message("assistant"):
         with st.spinner("Thinking..."):
-            # Call the Orchestrator
             response_payload = st.session_state.agent.process_query(prompt)
             
             answer = response_payload["answer"]

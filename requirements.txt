@@ -1,32 +1,21 @@
-# --- Core Framework ---
-langchain>=0.1.0
-langchain-community
-langchain-core
-langchain-text-splitters
+# --- LLM framework ---
+langchain-core>=1.2,<2
+langchain-community>=0.4,<0.5
+langchain-text-splitters>=1.1,<2
 
-# --- LLM Connectors ---
-langchain-ollama      # For Local Mistral 7B / Llama 3
-langchain-mistralai   # For Cloud Mistral Large
-ollama                # Python client for Ollama
+# --- Model providers ---
+langchain-ollama>=1.0,<2          # Local chat model + embeddings
+langchain-google-genai>=4.2,<5    # Gemini cloud model
 
-# --- Data Ingestion (The Heavy Lifting) ---
-# Unstructured is the gold standard for parsing tables from PDFs
-unstructured[all-docs]
-pdf2image
-pdfminer.six
-pypdf
-pillow_heif
-openpyxl              # For Excel ingestion
-pandas
-langchain-chroma
+# --- Vector store ---
+langchain-chroma>=1.1,<2
+chromadb>=1.4,<2
 
-# --- Vector Database ---
-chromadb              # Runs locally, no cloud setup needed
+# --- Document loaders ---
+pypdf>=6.0,<7                     # PDF (PyPDFLoader)
+unstructured[xlsx]>=0.16          # Excel (UnstructuredExcelLoader)
 
-# --- App Interface ---
-streamlit             # The Frontend
-
-# --- Utilities ---
-python-dotenv         # For managing API keys securely
-pydantic>=2.0         # For data validation (Enterprise requirement)
-tiktoken              # For counting tokens
+# --- App ---
+streamlit>=1.53,<2
+python-dotenv>=1.2,<2
+pydantic>=2.12,<3
