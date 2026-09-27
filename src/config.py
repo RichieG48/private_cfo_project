@@ -18,17 +18,14 @@ class Config:
     LOCAL_MODEL_NAME = "mistral"
     EMBEDDING_MODEL_NAME = "nomic-embed-text"
     OLLAMA_BASE_URL = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434")
-    # The powerful cloud model for generic reasoning
-    CLOUD_MODEL_NAME = "gemini-2.5-flash"
+    # The cloud model for generic reasoning (Anthropic API, key read from ANTHROPIC_API_KEY)
+    CLOUD_MODEL_NAME = "claude-opus-5"
     
     # --- Vector Store ---
     COLLECTION_NAME = "finance_docs"
     # Size of text chunks (balance between context and retrieval precision)
     CHUNK_SIZE = 1000
     CHUNK_OVERLAP = 200
-
-    # --- API Keys ---
-    GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
 
 # Create a global config instance
 settings = Config()

@@ -63,7 +63,7 @@ with st.sidebar:
 st.title("🔒 Private CFO Agent")
 st.markdown("""
 * **Sovereign Mode:** Answers sensitive questions using local Ollama (Mistral).
-* **Cloud Mode:** Answers general math/coding questions using Gemini.
+* **Cloud Mode:** Answers general math/coding questions using Claude.
 """)
 
 # Display Chat History

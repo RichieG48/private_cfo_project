@@ -56,10 +56,10 @@ ollama pull nomic-embed-text
 Create a `.env` file in the root directory:
 
 ```env
-GOOGLE_API_KEY=your_gemini_api_key_here
+ANTHROPIC_API_KEY=your_anthropic_api_key_here
 ```
 
-The key is only used for queries the router classifies as generic. Without it, every query is answered by the local model.
+The key is only used for queries the router classifies as generic. Sensitive queries never leave your machine and need no key.
 
 ### 4. Run the Application
 
@@ -77,7 +77,7 @@ $env:PYTHONPATH="."; streamlit run src/app.py  # Windows (PowerShell)
 3. Chat:
 
    - Ask a specific question: "What was the revenue in 2023?" -> Routed to Local Mistral.
-   - Ask a general question: "Write a Python script to calculate CAGR." -> Routed to Cloud Gemini.
+   - Ask a general question: "Write a Python script to calculate CAGR." -> Routed to Claude (cloud).
 
 ## Architectural Decisions
 

@@ -5,7 +5,7 @@ langchain-text-splitters>=1.1,<2
 
 # --- Model providers ---
 langchain-ollama>=1.0,<2          # Local chat model + embeddings
-langchain-google-genai>=4.2,<5    # Gemini cloud model
+anthropic>=1.8,<2                 # Claude cloud model
 
 # --- Vector store ---
 langchain-chroma>=1.1,<2
